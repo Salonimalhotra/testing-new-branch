@@ -34,7 +34,7 @@ public class GithubRepoCreator {
         //git.commit().setMessage(commitMessage).call();
         String[] cmd0 = {"git", "add", ".", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
         String[] cmd1 = {"git", "commit", "-m", "'hello'", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
-        String[] cmd2 = {"git", "push", "origin", "main", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        String[] cmd2 = {"git", "push", "-u","origin", "main", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
 
         Process p = Runtime.getRuntime().exec(cmd0);
         System.out.println(p.isAlive());
