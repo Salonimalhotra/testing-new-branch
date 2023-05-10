@@ -92,8 +92,8 @@ public class Main {
         workbook.close();
         System.out.println("Workbook downloaded and saved successfully.");
 
-        //GithubRepoCreator repo = new GithubRepoCreator("https://github.com/Salonimalhotra/testing.git","new-branch","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");
-        //repo.uploadFile("Changing excel");
+        GithubRepoCreator repo = new GithubRepoCreator("https://github.com/Salonimalhotra/testing.git","new-branch","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");
+        repo.uploadFile("Changing excel");
 
         //return convertToArray(data);
     }
