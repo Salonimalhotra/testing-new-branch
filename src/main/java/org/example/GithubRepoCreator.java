@@ -23,7 +23,7 @@ public class GithubRepoCreator {
         this.token = token;
     }
 
-    public void uploadFile(String commitMessage) throws IOException, GitAPIException {
+    public void uploadFile(String commitMessage) throws IOException, GitAPIException, InterruptedException {
         Repository repository = getLocalRepository();
         Git git = new Git(repository);
 
@@ -39,21 +39,30 @@ public class GithubRepoCreator {
         Process p = Runtime.getRuntime().exec(cmd0);
         System.out.println(p.isAlive());
 
-        Process process1 = Runtime.getRuntime()
-                .exec(cmd1);
+
+        int status = p.waitFor();
+        System.out.println(status);
+            Process process1 = Runtime.getRuntime()
+                    .exec(cmd1);
+            BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
+            String line = "";
+            while ((line = reader1.readLine()) != null) {
+                System.out.println(line);
+            }
+            if((line = reader1.readLine()) == null){
+                Process process2 = Runtime.getRuntime()
+                        .exec(cmd2);
+            }
+        }
+
+
+
 
 //        Process process2 = Runtime.getRuntime()
 //                .exec(cmd2);
 
-        BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
-        String line = "";
-        while ((line = reader1.readLine()) != null) {
-            System.out.println(line);
-        }
-        if((line = reader1.readLine()) == null){
-            Process process2 = Runtime.getRuntime()
-                    .exec(cmd2);
-        }
+
+
 
 //        BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
 //        String line1 = "";
@@ -63,7 +72,8 @@ public class GithubRepoCreator {
 
         // Push changes
         //git.push().setCredentialsProvider(getCredentialsProvider()).call();
-    }
+        //System.out.println(p.isAlive());
+
 
     private Repository getLocalRepository() throws IOException {
         FileRepositoryBuilder builder = new FileRepositoryBuilder();
