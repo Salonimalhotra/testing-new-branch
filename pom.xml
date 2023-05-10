@@ -73,6 +73,13 @@
 
         <!-- GPG support for JGit based on BouncyCastle (commit signing) -->
 
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.314</version>
+        </dependency>
+
+
 
     </dependencies>
 

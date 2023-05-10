@@ -6,8 +6,10 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class GithubRepoCreator {
 
@@ -29,10 +31,19 @@ public class GithubRepoCreator {
         git.add().addFilepattern(".").call();
 
         // Commit changes
-        git.commit().setMessage(commitMessage).call();
+        //git.commit().setMessage(commitMessage).call();
+        String[] cmd = {"git","commit","-m","'hello'","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        Process process = Runtime.getRuntime()
+                .exec(cmd);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line = "";
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
 
         // Push changes
-        git.push().setCredentialsProvider(getCredentialsProvider()).call();
+        //git.push().setCredentialsProvider(getCredentialsProvider()).call();
     }
 
     private Repository getLocalRepository() throws IOException {
