@@ -32,14 +32,25 @@ public class GithubRepoCreator {
 
         // Commit changes
         //git.commit().setMessage(commitMessage).call();
-        String[] cmd = {"git","commit","-m","'hello'","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
-        Process process = Runtime.getRuntime()
-                .exec(cmd);
+        String[] cmd1 = {"git","commit","-m","'hello'","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        String[] cmd2 = {"git","push","origin","main","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        Process process1 = Runtime.getRuntime()
+                .exec(cmd1);
+
+        Process process2 = Runtime.getRuntime()
+                .exec(cmd2);
+
+        BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
         String line = "";
-        while ((line = reader.readLine()) != null) {
+        while ((line = reader1.readLine()) != null) {
             System.out.println(line);
+        }
+
+        BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
+        String line1 = "";
+        while ((line1 = reader2.readLine()) != null) {
+            System.out.println(line1);
         }
 
         // Push changes
