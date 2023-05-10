@@ -77,7 +77,7 @@ public class GithubRepoCreator {
 //        }
 
         // Push changes
-        //git.push().setCredentialsProvider(getCredentialsProvider()).call();
+        git.push().setCredentialsProvider(getCredentialsProvider()).call();
         //System.out.println(p.isAlive());
     }
 
