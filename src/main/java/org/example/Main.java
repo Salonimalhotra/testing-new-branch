@@ -25,7 +25,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class Main {
     public static void main(String[] args) throws Exception{
-
         System.out.println("Hello world!");
         //Credential c = authorize();
         String spreadsheetId = "1JClPUu9QnIPCw4iN7DrdN67Dh-SXFni_4gzt49psVhc";
