@@ -32,16 +32,18 @@ public class GithubRepoCreator {
 
         // Commit changes
         //git.commit().setMessage(commitMessage).call();
-        String[] cmd0 = {"git","add",".","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
-        String[] cmd1 = {"git","commit","-m","'hello'","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
-        String[] cmd2 = {"git","push","origin","main","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        String[] cmd0 = {"git", "add", ".", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        String[] cmd1 = {"git", "commit", "-m", "'hello'", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+        String[] cmd2 = {"git", "push", "origin", "main", "/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
 
         Process p = Runtime.getRuntime().exec(cmd0);
         System.out.println(p.isAlive());
 
 
-        int status = p.waitFor();
-        System.out.println(status);
+        int status1 = p.waitFor();
+        System.out.println(status1);
+
+        if (status1 == 0) {
             Process process1 = Runtime.getRuntime()
                     .exec(cmd1);
             BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
@@ -49,19 +51,23 @@ public class GithubRepoCreator {
             while ((line = reader1.readLine()) != null) {
                 System.out.println(line);
             }
-            if((line = reader1.readLine()) == null){
+
+            int status2 = process1.waitFor();
+            if (status2 == 0) {
                 Process process2 = Runtime.getRuntime()
                         .exec(cmd2);
+                BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
+                String line1 = "";
+                while ((line1 = reader2.readLine()) != null) {
+                    System.out.println(line1);
+                }
+
             }
         }
 
 
-
-
 //        Process process2 = Runtime.getRuntime()
 //                .exec(cmd2);
-
-
 
 
 //        BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
@@ -73,7 +79,7 @@ public class GithubRepoCreator {
         // Push changes
         //git.push().setCredentialsProvider(getCredentialsProvider()).call();
         //System.out.println(p.isAlive());
-
+    }
 
     private Repository getLocalRepository() throws IOException {
         FileRepositoryBuilder builder = new FileRepositoryBuilder();
