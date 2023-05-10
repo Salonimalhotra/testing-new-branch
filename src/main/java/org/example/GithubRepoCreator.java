@@ -54,6 +54,7 @@ public class GithubRepoCreator {
 
             int status2 = process1.waitFor();
             if (status2 == 0) {
+                System.out.println("cominghere");
                 Process process2 = Runtime.getRuntime()
                         .exec(cmd2);
                 BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
