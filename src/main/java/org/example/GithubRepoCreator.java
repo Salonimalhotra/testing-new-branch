@@ -32,26 +32,34 @@ public class GithubRepoCreator {
 
         // Commit changes
         //git.commit().setMessage(commitMessage).call();
+        String[] cmd0 = {"git","add",".","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
         String[] cmd1 = {"git","commit","-m","'hello'","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
         String[] cmd2 = {"git","push","origin","main","/Users/smalhotra1/Desktop/Test/untitled folder/testing-new-branch"};
+
+        Process p = Runtime.getRuntime().exec(cmd0);
+        System.out.println(p.isAlive());
 
         Process process1 = Runtime.getRuntime()
                 .exec(cmd1);
 
-        Process process2 = Runtime.getRuntime()
-                .exec(cmd2);
+//        Process process2 = Runtime.getRuntime()
+//                .exec(cmd2);
 
         BufferedReader reader1 = new BufferedReader(new InputStreamReader(process1.getInputStream()));
         String line = "";
         while ((line = reader1.readLine()) != null) {
             System.out.println(line);
         }
-
-        BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
-        String line1 = "";
-        while ((line1 = reader2.readLine()) != null) {
-            System.out.println(line1);
+        if((line = reader1.readLine()) == null){
+            Process process2 = Runtime.getRuntime()
+                    .exec(cmd2);
         }
+
+//        BufferedReader reader2 = new BufferedReader(new InputStreamReader(process2.getInputStream()));
+//        String line1 = "";
+//        while ((line1 = reader2.readLine()) != null) {
+//            System.out.println(line1);
+//        }
 
         // Push changes
         //git.push().setCredentialsProvider(getCredentialsProvider()).call();
