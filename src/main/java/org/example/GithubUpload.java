@@ -4,7 +4,7 @@ import org.kohsuke.github.*;
 
 public class GithubUpload {
 
-    String token = "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";
+    String token = "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";
     String repositoryName = "testing-new-branch";
     String baseBranch = "main";
     String newBranch = "new-feature-branch";
@@ -16,9 +16,10 @@ public class GithubUpload {
 
     }
     public void push() {
+        System.out.println("hi");
         try {
             GitHub github = new GitHubBuilder().withOAuthToken(token).build();
-
+            System.out.println("hi");
             // Search for the repository based on its name
             GHRepository repository = github.getRepository(repositoryName);
             String repositoryOwner = repository.getOwnerName();
